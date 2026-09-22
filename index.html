@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Key Mavens Group – Investment Report – 21 September 2026</title>
+<style>
+  :root{--green:#0b3d2e;--green2:#14573f;--green3:#1f7a55;--accent:#2e8b57;--gold:#c9a227;--grey:#f3f7f5;--text:#1f2937;--muted:#6b7280;--line:#e5e7eb;--paid:#2e8b57;--next:#c9a227;--future:#9ca3af}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Segoe UI",Arial,Helvetica,sans-serif;color:var(--text);background:#f7faf8}
+  header{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;padding:28px 24px 0}
+  header .inner{max-width:1150px;margin:0 auto}
+  header .topline{display:flex;justify-content:space-between;align-items:center;gap:20px}
+  header .logo{height:64px;width:auto;max-width:220px;object-fit:contain;flex-shrink:0}
+  .brand{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:12px}
+  header h1{margin:0 0 6px;font-size:26px}
+  header p{margin:0 0 18px;color:#cfe3d9;font-size:14px}
+  .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+  .btn{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3);padding:6px 12px;border-radius:6px;font-size:12px;cursor:pointer}
+  .btn:hover{background:rgba(255,255,255,.22)}
+  nav{display:flex;gap:4px;flex-wrap:wrap}
+  nav button{background:transparent;color:#cfe3d9;border:none;border-bottom:3px solid transparent;padding:12px 16px;font-size:14px;font-weight:600;cursor:pointer}
+  nav button:hover{color:#fff}
+  nav button.active{color:#fff;border-bottom-color:var(--gold)}
+  main{max-width:1150px;margin:0 auto;padding:28px 24px 48px}
+  .panel{display:none;animation:fade .25s}
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .section-head{display:flex;align-items:baseline;gap:14px;border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:16px;flex-wrap:wrap}
+  .section-head .num{font-size:12px;font-weight:700;letter-spacing:2px;color:var(--gold)}
+  .section-head h2{margin:0;font-size:22px;color:var(--green)}
+  .lead{color:var(--muted);font-size:14px;margin:0 0 18px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px;margin-bottom:20px}
+  .kpi{background:#fff;border-left:4px solid var(--green);padding:14px 16px;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);transition:transform .15s,box-shadow .15s}
+  .kpi:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(11,61,46,.15)}
+  .kpi .label{font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .kpi .value{font-size:20px;font-weight:700;color:var(--green)}
+  .kpi .sub{font-size:12px;color:var(--muted);margin-top:4px}
+  .kpi.gold{border-left-color:var(--gold)} .kpi.accent{border-left-color:var(--accent)} .kpi.accent .value{color:var(--accent)}
+  .card{background:#fff;border-radius:8px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:20px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:800px){.grid2{grid-template-columns:1fr}}
+  h3{font-size:14px;color:var(--green);margin:0 0 12px;text-transform:uppercase;letter-spacing:1px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th{background:var(--green);color:#fff;text-align:left;padding:10px 12px;font-weight:600;font-size:12px;letter-spacing:.8px;text-transform:uppercase}
+  td{padding:9px 12px;border-bottom:1px solid var(--line)}
+  tbody tr:hover td{background:#eef6f1}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  tr.total td{font-weight:700;background:var(--grey);border-top:2px solid var(--green)}
+  tr.yearhead td{background:#e6f0ea;font-weight:700;color:var(--green);cursor:pointer}
+  tr.yearhead td:first-child::before{content:"▾ ";font-size:12px}
+  tr.yearhead.collapsed td:first-child::before{content:"▸ "}
+  tr.hidden{display:none}
+  .pill{display:inline-block;padding:2px 9px;border-radius:12px;font-size:11px;font-weight:700;color:#fff}
+  .pill.paid{background:var(--paid)} .pill.next{background:var(--next);color:var(--green)} .pill.future{background:var(--future)}
+  .bar{display:flex;height:28px;border-radius:6px;overflow:hidden;margin:8px 0 6px;font-size:12px;color:#fff;font-weight:600}
+  .bar div{display:flex;align-items:center;justify-content:center;white-space:nowrap;cursor:pointer;transition:filter .15s}
+  .bar div:hover{filter:brightness(1.15)}
+  .legend{font-size:12px;color:var(--muted)}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .chip{border:1px solid var(--green);color:var(--green);background:#fff;padding:5px 12px;border-radius:16px;font-size:12px;cursor:pointer;font-weight:600}
+  .chip.active,.chip:hover{background:var(--green);color:#fff}
+  .progress{height:14px;background:#e5e7eb;border-radius:7px;overflow:hidden;margin:6px 0}
+  .progress span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--green3));width:0;transition:width .8s ease}
+  .timeline{display:grid;grid-template-columns:repeat(20,1fr);gap:4px;margin:10px 0}
+  .timeline div{height:34px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:700;cursor:pointer;transition:transform .15s}
+  .timeline div:hover{transform:scale(1.08)}
+  .tooltip{position:fixed;background:var(--green);color:#fff;padding:6px 10px;border-radius:6px;font-size:12px;pointer-events:none;opacity:0;transition:opacity .1s;z-index:99;white-space:nowrap}
+  .note{background:#fff8e1;border-left:4px solid var(--gold);padding:10px 14px;font-size:13px;border-radius:4px;margin-top:12px}
+  footer{max-width:1150px;margin:0 auto;padding:14px 24px 30px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  @media print{header{-webkit-print-color-adjust:exact;print-color-adjust:exact}.panel{display:block!important;page-break-after:always}nav,.toolbar,.filters{display:none}}
+</style>
+</head>
+<body>
+<div class="tooltip" id="tip"></div>
+<header>
+  <div class="inner">
+    <div class="topline">
+      <div>
+        <div class="brand">Key Mavens Group</div>
+        <h1>Investment Portfolio Report</h1>
+        <p>Reporting date: 21 September 2026 &nbsp;|&nbsp; Currency: AED &nbsp;|&nbsp; Terraces · Montage · Villa Mall · Residential Units</p>
+      </div>
+      <img class="logo" src="kmglogo.png" alt="Key Mavens Group logo">
+    </div>
+    <div class="toolbar">
+      <button class="btn" onclick="toggleFormat()" id="fmtBtn">Show in millions</button>
+      <button class="btn" onclick="window.print()">Print / PDF</button>
+    </div>
+    <nav id="nav">
+      <button data-p="terraces" class="active">01 Terraces</button>
+      <button data-p="montage">02 Montage</button>
+      <button data-p="villamall">03 Villa Mall</button>
+      <button data-p="residential">04 Residential</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- PROJECT 01 -->
+<section class="panel active" id="terraces">
+  <div class="section-head"><span class="num">PROJECT 01 — CAPITAL RECYCLING</span><h2>Terraces Investment – Project Hand Over</h2></div>
+  <p class="lead">Realised Terraces capital was redeployed into Montage, creating a clear path from reinvested principal to projected exit value. The realised value was allocated between residential assets, bank transfers and reinvestment.</p>
+  <div class="kpis">
+    <div class="kpi"><div class="label">Terraces realised value</div><div class="value" data-v="50000000">AED 50,000,000.00</div></div>
+    <div class="kpi gold"><div class="label">Terraces profit value</div><div class="value" data-v="7500000">AED 7,500,000.00</div><div class="sub">15% on principal</div></div>
+    <div class="kpi"><div class="label">Total paid / allocated</div><div class="value" data-v="21150467">AED 21,150,467.00</div></div>
+    <div class="kpi accent"><div class="label">Balance reinvested (Montage)</div><div class="value" data-v="36349533">AED 36,349,533.00</div></div>
+  </div>
+  <div class="card">
+    <h3>Terraces capital flow</h3>
+    <table>
+      <thead><tr><th>Component</th><th>Description</th><th class="num">Amount (AED)</th></tr></thead>
+      <tbody>
+        <tr><td>Realised inflow</td><td>AED 50.0M principal + AED 7.5M profit</td><td class="num" data-v="57500000">57,500,000.00</td></tr>
+        <tr><td>Apartments allocation</td><td>Residential units 1004 &amp; 1702</td><td class="num" data-v="-11135800">(11,135,800.00)</td></tr>
+        <tr><td>January 2025 transfer</td><td>Bank transfer</td><td class="num" data-v="-5000000">(5,000,000.00)</td></tr>
+        <tr><td>February 2025 transfer</td><td>Bank transfer</td><td class="num" data-v="-5014667">(5,014,667.00)</td></tr>
+        <tr><td>Total paid / allocated</td><td></td><td class="num" data-v="-21150467">(21,150,467.00)</td></tr>
+        <tr class="total"><td>Balance reinvested – Montage</td><td>Balance redeployed for growth</td><td class="num" data-v="36349533">36,349,533.00</td></tr>
+      </tbody>
+    </table>
+    <div class="bar">
+      <div style="width:63.2%;background:var(--accent)" data-tip="Reinvested in Montage: AED 36,349,533.00">Reinvested 63.2%</div>
+      <div style="width:19.4%;background:var(--green)" data-tip="Apartments 1004 & 1702: AED 11,135,800.00">Apartments 19.4%</div>
+      <div style="width:17.4%;background:var(--gold)" data-tip="Jan + Feb 2025 transfers: AED 10,014,667.00">Transfers 17.4%</div>
+    </div>
+    <div class="legend">Share of AED 57.5M realised inflow</div>
+  </div>
+</section>
+
+<!-- PROJECT 02 -->
+<section class="panel" id="montage">
+  <div class="section-head"><span class="num">PROJECT 02 — ONGOING</span><h2>Montage Investment Performance</h2></div>
+  <p class="lead">The Montage position is presented through the reinvested capital base, total projected profit and resulting projected balance. Hand over: December 2027.</p>
+  <div class="kpis">
+    <div class="kpi"><div class="label">Reinvested principal</div><div class="value" data-v="36349533">AED 36,349,533.00</div></div>
+    <div class="kpi gold"><div class="label">Montage profit – hand over Dec 2027</div><div class="value" data-v="16357289.85">AED 16,357,289.85</div><div class="sub">≈ 45.0% on principal</div></div>
+    <div class="kpi accent"><div class="label">Projected exit balance</div><div class="value" data-v="52706822.85">AED 52,706,822.85</div></div>
+  </div>
+  <div class="card">
+    <h3>Projected value build-up</h3>
+    <div class="bar">
+      <div style="width:69%;background:var(--green)" data-tip="Reinvested principal: AED 36,349,533.00">Principal AED 36.350M</div>
+      <div style="width:31%;background:var(--gold)" data-tip="Projected profit: AED 16,357,289.85">Profit AED 16.357M</div>
+    </div>
+    <div class="legend">Reinvested principal + projected Montage profit = projected exit balance AED 52.707M</div>
+    <h3 style="margin-top:20px">Time to hand over</h3>
+    <div class="progress"><span id="montageProg"></span></div>
+    <div class="legend" id="montageProgTxt"></div>
+  </div>
+</section>
+
+<!-- PROJECT 03 -->
+<section class="panel" id="villamall">
+  <div class="section-head"><span class="num">PROJECT 03 — VILLA MALL</span><h2>Commercial Investment Return Profile</h2></div>
+  <p class="lead">Investment dated 25 September 2025. A five-year commercial plan at 20% per annum, paid quarterly. Earned and unearned profit separated at the reporting date.</p>
+  <div class="kpis">
+    <div class="kpi"><div class="label">Villa Mall investment</div><div class="value" data-v="64225000">AED 64,225,000.00</div><div class="sub">Dated 25-Sep-2025</div></div>
+    <div class="kpi gold"><div class="label">Planned profit – 20% × 5 years</div><div class="value" data-v="64225000">AED 64,225,000.00</div><div class="sub">Gross value AED 128,450,000.00</div></div>
+    <div class="kpi"><div class="label">Quarterly planned amount</div><div class="value" data-v="3211250">AED 3,211,250.00</div><div class="sub">Annual AED 12,845,000.00</div></div>
+    <div class="kpi accent"><div class="label">Paid to date (first year)</div><div class="value" data-v="12845000">AED 12,845,000.00</div><div class="sub">4 of 20 quarters</div></div>
+    <div class="kpi gold"><div class="label">Next payment</div><div class="value" data-v="3211250">AED 3,211,250.00</div><div class="sub">Nov 2026 · Year 2 Q1</div></div>
+    <div class="kpi"><div class="label">Expected profits to be earned</div><div class="value" data-v="51380000">AED 51,380,000.00</div><div class="sub">16 quarters remaining</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>Five-year value plan</h3>
+      <table>
+        <thead><tr><th>Item</th><th class="num">Amount (AED)</th><th class="num">%</th></tr></thead>
+        <tbody>
+          <tr><td>The Villa Mall – investment</td><td class="num" data-v="64225000">64,225,000.00</td><td class="num">100%</td></tr>
+          <tr><td>Profits – 20% annual, 5 years</td><td class="num" data-v="64225000">64,225,000.00</td><td class="num">100%</td></tr>
+          <tr class="total"><td>Total</td><td class="num" data-v="128450000">128,450,000.00</td><td class="num">200%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Profit composition at reporting date</h3>
+      <div class="bar">
+        <div style="width:20%;background:var(--accent)" data-tip="Paid first year: AED 12,845,000.00">Paid 20%</div>
+        <div style="width:80%;background:var(--green)" data-tip="Expected to be earned: AED 51,380,000.00">Expected 80%</div>
+      </div>
+      <div class="legend">Paid vs expected profits to be earned – total AED 64,225,000.00</div>
+      <h3 style="margin-top:18px">Plan progress</h3>
+      <div class="progress"><span id="vmProg"></span></div>
+      <div class="legend">4 of 20 quarterly payments received (20%)</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>20-quarter payment timeline (hover for details, click to filter table)</h3>
+    <div class="timeline" id="timeline"></div>
+    <div class="legend"><span class="pill paid">Paid</span> &nbsp;<span class="pill next">Next</span> &nbsp;<span class="pill future">Scheduled</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Quarterly profit schedule</h3>
+    <div class="filters" id="vmFilters">
+      <button class="chip active" data-f="all">All</button>
+      <button class="chip" data-f="paid">Paid</button>
+      <button class="chip" data-f="due">Remaining</button>
+      <button class="chip" data-f="1">Year 1</button>
+      <button class="chip" data-f="2">Year 2</button>
+      <button class="chip" data-f="3">Year 3</button>
+      <button class="chip" data-f="4">Year 4</button>
+      <button class="chip" data-f="5">Year 5</button>
+    </div>
+    <table id="schedule">
+      <thead><tr><th>Year</th><th>Quarter</th><th>Due</th><th class="num">Amount (AED)</th><th class="num">Cumulative (AED)</th><th>Status</th></tr></thead>
+      <tbody></tbody>
+      <tfoot></tfoot>
+    </table>
+    <div class="note">Dates normalised from the source sheet: Year 4 Q2 “1-Feb” read as Feb 2029 and Year 5 Q2 “Feb-30” as Feb 2030. Status computed against the reporting date of 21 September 2026.</div>
+  </div>
+</section>
+
+<!-- INVESTMENT 04 -->
+<section class="panel" id="residential">
+  <div class="section-head"><span class="num">INVESTMENT 04 — RESIDENTIAL ASSETS</span><h2>Income Residential Units</h2></div>
+  <p class="lead">Residential operating performance – income after service charges through September 2026.</p>
+  <div class="kpis">
+    <div class="kpi"><div class="label">Gross residential income</div><div class="value" data-v="995947.23">AED 995,947.23</div></div>
+    <div class="kpi"><div class="label">Total service charges</div><div class="value" data-v="148707.40">AED 148,707.40</div><div class="sub">14.9% of gross</div></div>
+    <div class="kpi accent"><div class="label">Net residential income</div><div class="value" data-v="847239.83">AED 847,239.83</div><div class="sub">7.6% net yield on AED 11.14M</div></div>
+  </div>
+  <div class="card">
+    <table>
+      <thead><tr><th>Unit</th><th class="num">Investment (AED)</th><th class="num">Total revenue (AED)</th><th class="num">Service charge (AED)</th><th class="num">Net income (AED)</th><th class="num">Net yield</th><th>Documents</th></tr></thead>
+      <tbody>
+        <tr><td>Unit 1004</td><td class="num" data-v="5553600">5,553,600.00</td><td class="num" data-v="485630.23">485,630.23</td><td class="num" data-v="-74120.56">(74,120.56)</td><td class="num" data-v="411509.67">411,509.67</td><td class="num">7.41%</td><td><a class="btn" style="display:inline-block;background:var(--green);color:#fff;text-decoration:none;border-color:var(--green)" href="https://drive.google.com/drive/folders/17yjbiL3LT4PPH7_Bqa5CskgxhD19Dtod?usp=sharing" target="_blank" rel="noopener noreferrer">Unit No 1004</a></td></tr>
+        <tr><td>Unit 1702</td><td class="num" data-v="5582200">5,582,200.00</td><td class="num" data-v="510317">510,317.00</td><td class="num" data-v="-74586.84">(74,586.84)</td><td class="num" data-v="435730.16">435,730.16</td><td class="num">7.81%</td><td><a class="btn" style="display:inline-block;background:var(--green);color:#fff;text-decoration:none;border-color:var(--green)" href="https://drive.google.com/drive/folders/13I-7VyV4kwaP55yJq15LabC_ObxbG7oX?usp=drive_link" target="_blank" rel="noopener noreferrer">Unit No 1702</a></td></tr>
+        <tr class="total"><td>Total</td><td class="num" data-v="11135800">11,135,800.00</td><td class="num" data-v="995947.23">995,947.23</td><td class="num" data-v="-148707.40">(148,707.40)</td><td class="num" data-v="847239.83">847,239.83</td><td class="num">7.61%</td><td></td></tr>
+      </tbody>
+    </table>
+    <div class="bar" style="margin-top:14px">
+      <div style="width:85.1%;background:var(--accent)" data-tip="Net income retained: AED 847,239.83">Net income 85.1%</div>
+      <div style="width:14.9%;background:var(--gold)" data-tip="Service charges: AED 148,707.40">Service charges 14.9%</div>
+    </div>
+    <div class="legend">Share of AED 995,947.23 gross residential income</div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <span>Key Mavens Group · Investment Portfolio Report</span>
+  <span>Prepared 21 September 2026 · All figures in AED</span>
+</footer>
+
+<script>
+// ---------- Navigation ----------
+function show(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===id));
+  document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.p===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('#nav button').forEach(b=>b.addEventListener('click',()=>show(b.dataset.p)));
+
+// ---------- Number format toggle ----------
+let millions=false;
+function fmt(v){
+  const neg=v<0, a=Math.abs(v);
+  let s = millions ? (a/1e6).toFixed(3)+'M' : a.toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});
+  return neg?'('+s+')':s;
+}
+function toggleFormat(){
+  millions=!millions;
+  document.getElementById('fmtBtn').textContent = millions?'Show full amounts':'Show in millions';
+  document.querySelectorAll('[data-v]').forEach(el=>{
+    const v=parseFloat(el.dataset.v);
+    const prefix = el.classList.contains('value') ? 'AED ' : '';
+    el.textContent = prefix+fmt(v);
+  });
+}
+
+// ---------- Tooltip ----------
+const tip=document.getElementById('tip');
+document.addEventListener('mouseover',e=>{
+  const t=e.target.closest('[data-tip]'); if(!t) return;
+  tip.textContent=t.dataset.tip; tip.style.opacity=1;
+});
+document.addEventListener('mousemove',e=>{tip.style.left=(e.clientX+12)+'px';tip.style.top=(e.clientY+12)+'px';});
+document.addEventListener('mouseout',e=>{ if(e.target.closest('[data-tip]')) tip.style.opacity=0; });
+
+// ---------- Villa Mall schedule ----------
+const REPORT=new Date(2026,8,21); // 21 Sep 2026
+const Q=3211250;
+const months=['Nov','Feb','May','Aug'];
+const yearNames=['First Year','Second Year','Third Year','Forth Year','Fifth Year'];
+const sched=[];
+for(let y=1;y<=5;y++){
+  for(let q=1;q<=4;q++){
+    const yr = 2024+y + (q===1?0:1); // Q1 Nov of 2024+y, Q2–Q4 following year
+    const mIdx={Nov:10,Feb:1,May:4,Aug:7}[months[q-1]];
+    sched.push({year:y,yearName:yearNames[y-1],q:'Profit Q'+q,due:new Date(yr,mIdx,1),label:months[q-1]+' '+yr});
+  }
+}
+let nextFound=false;
+sched.forEach((s,i)=>{
+  s.paid = s.due<=REPORT;
+  s.next = !s.paid && !nextFound; if(s.next) nextFound=true;
+  s.cum = Q*(i+1);
+});
+
+const tbody=document.querySelector('#schedule tbody');
+const tfoot=document.querySelector('#schedule tfoot');
+function renderSchedule(filter){
+  tbody.innerHTML='';
+  let shownTotal=0, curYear=0;
+  sched.forEach(s=>{
+    const match = filter==='all' || (filter==='paid'&&s.paid) || (filter==='due'&&!s.paid) || String(s.year)===filter;
+    if(!match) return;
+    if(s.year!==curYear){
+      curYear=s.year;
+      const hr=document.createElement('tr'); hr.className='yearhead'; hr.dataset.year=s.year;
+      hr.innerHTML=`<td colspan="6">${s.yearName}</td>`;
+      hr.addEventListener('click',()=>{
+        hr.classList.toggle('collapsed');
+        tbody.querySelectorAll(`tr[data-row-year="${s.year}"]`).forEach(r=>r.classList.toggle('hidden'));
+      });
+      tbody.appendChild(hr);
+    }
+    const status = s.paid?'<span class="pill paid">Paid</span>':(s.next?'<span class="pill next">Next</span>':'<span class="pill future">Scheduled</span>');
+    const tr=document.createElement('tr'); tr.dataset.rowYear=s.year;
+    tr.innerHTML=`<td></td><td>${s.q}</td><td>${s.label}</td><td class="num" data-v="${-Q}">${fmt(-Q)}</td><td class="num" data-v="${s.cum}">${fmt(s.cum)}</td><td>${status}</td>`;
+    tbody.appendChild(tr);
+    shownTotal+=Q;
+  });
+  const paidTotal=sched.filter(s=>s.paid).length*Q;
+  tfoot.innerHTML=`
+    <tr class="total"><td colspan="3">Shown total</td><td class="num" data-v="${-shownTotal}">${fmt(-shownTotal)}</td><td></td><td></td></tr>
+    <tr class="total"><td colspan="3">Paid to date</td><td class="num" data-v="${-paidTotal}">${fmt(-paidTotal)}</td><td></td><td></td></tr>
+    <tr class="total"><td colspan="3">Expected profits to be earned</td><td class="num" data-v="${Q*20-paidTotal}">${fmt(Q*20-paidTotal)}</td><td></td><td></td></tr>`;
+}
+renderSchedule('all');
+
+document.querySelectorAll('#vmFilters .chip').forEach(c=>c.addEventListener('click',()=>{
+  document.querySelectorAll('#vmFilters .chip').forEach(x=>x.classList.remove('active'));
+  c.classList.add('active'); renderSchedule(c.dataset.f);
+}));
+
+// Timeline
+const tl=document.getElementById('timeline');
+sched.forEach(s=>{
+  const d=document.createElement('div');
+  d.style.background = s.paid?'var(--paid)':(s.next?'var(--next)':'var(--future)');
+  if(s.next) d.style.color='var(--green)';
+  d.textContent='Y'+s.year+s.q.slice(-2);
+  d.dataset.tip=`${s.yearName} ${s.q} · ${s.label} · AED 3,211,250.00 · ${s.paid?'Paid':(s.next?'Next payment':'Scheduled')}`;
+  d.addEventListener('click',()=>{
+    document.querySelectorAll('#vmFilters .chip').forEach(x=>x.classList.toggle('active',x.dataset.f===String(s.year)));
+    renderSchedule(String(s.year));
+    document.getElementById('schedule').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+  tl.appendChild(d);
+});
+
+// Progress bars
+setTimeout(()=>{
+  document.getElementById('vmProg').style.width='20%';
+  const start=new Date(2025,1,1), end=new Date(2027,11,31);
+  const pct=Math.min(100,Math.max(0,(REPORT-start)/(end-start)*100));
+  document.getElementById('montageProg').style.width=pct.toFixed(1)+'%';
+  const monthsLeft=Math.round((end-REPORT)/(1000*60*60*24*30.44));
+  document.getElementById('montageProgTxt').textContent=`${pct.toFixed(0)}% of the period elapsed · approx. ${monthsLeft} months to hand over (December 2027)`;
+},200);
+</script>
+</body>
+</html>
